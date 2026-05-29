@@ -1,0 +1,6 @@
+{
+  "name": "Sanatan Calendar",
+  "description": "An elegant, highly accurate and animated Vedic Panchang with daily and monthly views, upcoming festivals, and a celestial cosmic clock.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
