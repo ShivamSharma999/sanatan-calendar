@@ -1,13 +1,59 @@
 @import "tailwindcss";
 
+:root {
+  --bg-app: #faf7f2;
+  --text-app: #2d241e;
+  --bg-card: #ffffff;
+  --border-card: #e8dcc4;
+  --shadow-card: 0 4px 20px -2px rgba(45, 36, 30, 0.04), 0 2px 8px -1px rgba(45, 36, 30, 0.02);
+  --shadow-card-heavy: 0 6px 30px rgba(45, 36, 30, 0.04);
+  --bg-inner: #faf7f2;
+  --bg-inner-alt: #f5f1e8;
+  --bg-inner-hover: #f5f1e8;
+  --border-active: #d97706;
+  --bg-active: rgba(217, 119, 6, 0.08);
+
+  --text-primary: #78350f;   /* Deep Sienna */
+  --text-secondary: #92400e; /* Mid Sienna / Amber */
+  --text-accent: #d97706;    /* Vibrant Saffron */
+  --text-muted: #5c4f46;     /* Dark Taupe */
+  --text-muted-light: #8c7c70; /* Soft Warm Gray */
+  
+  --dial-ring: rgba(120, 53, 15, 0.1);
+  --dial-shadow: inset 0 4px 12px rgba(45, 36, 30, 0.03);
+}
+
+.dark {
+  --bg-app: #0c0a09;          /* Obsidian Black Mud */
+  --text-app: #f4eae0;         /* Soft Cream */
+  --bg-card: #15110f;         /* Deep Temple Charcoal */
+  --border-card: #3a2e26;      /* Charcoal Sienna Border */
+  --shadow-card: 0 4px 25px -2px rgba(0, 0, 0, 0.5), 0 2px 10px -1px rgba(0, 0, 0, 0.3);
+  --shadow-card-heavy: 0 6px 35px rgba(0, 0, 0, 0.6);
+  --bg-inner: #0f100f;         /* Dark inner space */
+  --bg-inner-alt: #1c1512;     /* Dark Charcoal Saffron */
+  --bg-inner-hover: #261e1a;   /* Sunlit soot */
+  --border-active: #f59e0b;    /* High contrast Saffron Amber */
+  --bg-active: rgba(245, 158, 11, 0.12);
+
+  --text-primary: #f59e0b;     /* Golden Saffron */
+  --text-secondary: #fb923c;   /* Soft Saffron */
+  --text-accent: #f59e0b;      /* Saffron */
+  --text-muted: #a89283;       /* Warm Stone Muted */
+  --text-muted-light: #c1ada0; /* Light Stone */
+  
+  --dial-ring: rgba(245, 158, 11, 0.15);
+  --dial-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
 @theme {
   --font-sans: "Lora", var(--font-sans), serif;
   --font-display: "Cinzel", var(--font-display), serif;
   
-  --color-sacred-orange: #d97706; /* Editorial Amber Orange */
-  --color-sacred-gold: #78350f;   /* Editorial Deep Sienna */
-  --color-sacred-dark: #faf7f2;   /* Editorial Soft Off-White */
-  --color-sacred-card: #ffffff;   /* Editorial White Card Background */
+  --color-sacred-orange: var(--text-accent);
+  --color-sacred-gold: var(--text-primary);
+  --color-sacred-dark: var(--bg-app);
+  --color-sacred-card: var(--bg-card);
   
   --animate-spin-slow: spin 20s linear infinite;
   --animate-pulse-slow: pulse 3s infinite;
@@ -15,113 +61,124 @@
 
 @layer base {
   body {
-    background-color: #faf7f2 !important;
-    color: #2d241e !important;
+    background-color: var(--bg-app) !important;
+    color: var(--text-app) !important;
+    transition: background-color 0.35s ease, color 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
   }
 }
 
 @layer utilities {
   .text-glow-gold {
-    text-shadow: 0 1px 2px rgba(120, 53, 15, 0.1);
+    text-shadow: 0 1px 2px rgba(245, 158, 11, 0.15);
   }
   .text-glow-saffron {
-    text-shadow: 0 1px 2px rgba(217, 119, 6, 0.15);
+    text-shadow: 0 1px 2px rgba(245, 158, 11, 0.2);
   }
   .glow-border {
-    box-shadow: 0 4px 20px -2px rgba(45, 36, 30, 0.04), 0 2px 8px -1px rgba(45, 36, 30, 0.02);
-    border: 1px solid #e8dcc4 !important;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--border-card) !important;
   }
 
   /* --- EDITORIAL AESTHETIC INTEGRATION OVERRIDES --- */
   
   #sanatan-root-app {
-    color: #2d241e !important;
+    color: var(--text-app) !important;
   }
 
   #sanatan-root-app header h1 {
     font-family: var(--font-display), serif !important;
-    color: #78350f !important;
+    color: var(--text-primary) !important;
+    transition: color 0.35s ease;
   }
 
   /* Input panel */
   #sanatan-controls {
-    background-color: #ffffff !important;
-    border: 1px solid #e8dcc4 !important;
-    box-shadow: 0 4px 30px rgba(45, 36, 30, 0.03) !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
+    box-shadow: var(--shadow-card) !important;
+    transition: all 0.35s ease;
   }
 
   #sanatan-controls label {
-    color: #92400e !important;
+    color: var(--text-secondary) !important;
     font-weight: 600 !important;
     font-size: 0.7rem !important;
     letter-spacing: 0.1em !important;
   }
 
   #sanatan-root-app input[type="date"] {
-    background-color: #faf7f2 !important;
-    border: 1px solid #e8dcc4 !important;
-    color: #2d241e !important;
+    background-color: var(--bg-app) !important;
+    border: 1px solid var(--border-card) !important;
+    color: var(--text-app) !important;
     font-family: var(--font-sans), serif !important;
     border-radius: 8px !important;
+    transition: all 0.35s ease;
   }
 
   #sanatan-root-app input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: sepia(50%) saturate(1000%) hue-rotate(340deg) brightness(80%) contrast(110%);
+    filter: sepia(50%) saturate(1000%) hue-rotate(340deg) brightness(85%) contrast(110%);
     cursor: pointer;
+  }
+  
+  .dark #sanatan-root-app input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1) sepia(50%) saturate(1000%) hue-rotate(30deg) brightness(120%);
   }
 
   /* Preset Day Buttons */
   #preset-prev-day, #preset-next-day {
-    background-color: #faf7f2 !important;
-    border: 1px solid #e8dcc4 !important;
-    color: #78350f !important;
+    background-color: var(--bg-app) !important;
+    border: 1px solid var(--border-card) !important;
+    color: var(--text-primary) !important;
+    transition: all 0.25s ease;
   }
 
   #preset-prev-day:hover, #preset-next-day:hover {
-    background-color: #e8dcc4 !important;
-    color: #2d241e !important;
+    background-color: var(--bg-inner-hover) !important;
+    color: var(--text-app) !important;
   }
 
   #preset-today {
-    background-color: rgba(217, 119, 6, 0.1) !important;
-    border: 1px solid rgba(217, 119, 6, 0.4) !important;
-    color: #d97706 !important;
+    background-color: var(--bg-active) !important;
+    border: 1px solid var(--border-active) !important;
+    color: var(--text-accent) !important;
+    transition: all 0.25s ease;
   }
 
   #preset-today:hover {
-    background-color: #d97706 !important;
+    background-color: var(--text-accent) !important;
     color: #ffffff !important;
   }
 
   /* GPS Indicator & button */
   #gps-trigger-button {
-    background-color: #faf7f2 !important;
-    border: 1px solid #e8dcc4 !important;
-    color: #2d241e !important;
+    background-color: var(--bg-app) !important;
+    border: 1px solid var(--border-card) !important;
+    color: var(--text-app) !important;
+    transition: all 0.25s ease;
   }
 
   #gps-trigger-button:hover {
-    background-color: #f5f1e8 !important;
-    border-color: #d97706 !important;
+    background-color: var(--bg-inner-hover) !important;
+    border-color: var(--border-active) !important;
   }
 
   #gps-trigger-button span {
-    color: #2d241e !important;
+    color: var(--text-app) !important;
     font-weight: 600 !important;
   }
 
   /* Language Switch Panel */
   #language-tab-picker {
-    background-color: #faf7f2 !important;
-    border: 1px solid #e8dcc4 !important;
+    background-color: var(--bg-app) !important;
+    border: 1px solid var(--border-card) !important;
   }
 
   #language-tab-picker button {
-    color: #5c4f46 !important;
+    color: var(--text-muted) !important;
   }
 
   #language-tab-picker button.bg-gradient-to-r {
-    background: #d97706 !important;
+    background: var(--text-accent) !important;
     color: #ffffff !important;
     font-weight: 700 !important;
     box-shadow: 0 2px 8px rgba(217, 119, 6, 0.2) !important;
@@ -130,107 +187,112 @@
   /* Nav Tabs Navigation Bar */
   #app-navigation-tabs button {
     border-radius: 8px !important;
-    border: 1px solid #e8dcc4 !important;
+    border: 1px solid var(--border-card) !important;
     font-family: var(--font-display), serif !important;
     letter-spacing: 0.05em !important;
     text-transform: uppercase !important;
+    transition: all 0.35s ease;
   }
 
   #app-navigation-tabs button:not(.bg-gradient-to-r) {
-    background-color: rgba(255, 255, 255, 0.7) !important;
-    color: #78350f !important;
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
   }
 
   #app-navigation-tabs button:not(.bg-gradient-to-r):hover {
-    background-color: #f5f1e8 !important;
-    border-color: #d97706 !important;
-    color: #2d241e !important;
+    background-color: var(--bg-inner-hover) !important;
+    border-color: var(--border-active) !important;
+    color: var(--text-app) !important;
   }
 
   #app-navigation-tabs button.bg-gradient-to-r {
-    background: linear-gradient(135deg, #d97706 0%, #78350f 100%) !important;
-    border-color: #78350f !important;
+    background: linear-gradient(135deg, var(--text-accent) 0%, var(--text-primary) 100%) !important;
+    border-color: var(--text-primary) !important;
     color: #ffffff !important;
-    box-shadow: 0 4px 15px rgba(120, 53, 15, 0.15) !important;
+    box-shadow: var(--shadow-card) !important;
   }
 
   /* Primary Daily Panchang Cards */
   .bg-gradient-to-br.from-sacred-card.to-stone-900 {
-    background: linear-gradient(135deg, #ffffff 0%, #f5f1e8 100%) !important;
-    border: 1px solid #e8dcc4 !important;
-    box-shadow: 0 4px 20px rgba(45, 36, 30, 0.03) !important;
+    background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-inner-alt) 100%) !important;
+    border: 1px solid var(--border-card) !important;
+    box-shadow: var(--shadow-card) !important;
+    transition: all 0.35s ease;
   }
 
   .bg-gradient-to-br.from-sacred-card.to-stone-900 .text-stone-400 {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
   }
 
   .bg-gradient-to-br.from-sacred-card.to-stone-900 h2 {
     font-family: var(--font-display), serif !important;
-    color: #2d241e !important;
+    color: var(--text-app) !important;
   }
 
   /* Sub-Anga Grid items (Nakshatra, Yoga, etc.) */
   .grid-cols-1.sm\:grid-cols-2 .bg-stone-900 {
-    background-color: #ffffff !important;
-    border: 1px solid #e8dcc4 !important;
-    box-shadow: 0 2px 10px rgba(45, 36, 30, 0.02) !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
+    box-shadow: var(--shadow-card) !important;
+    transition: all 0.35s ease;
   }
 
   .grid-cols-1.sm\:grid-cols-2 .bg-stone-900:hover {
-    border-color: #d97706 !important;
-    box-shadow: 0 4px 15px rgba(217, 119, 6, 0.05) !important;
+    border-color: var(--border-active) !important;
+    box-shadow: var(--shadow-card-heavy) !important;
   }
 
   .grid-cols-1.sm\:grid-cols-2 h3.text-sacred-gold {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
   }
 
   .grid-cols-1.sm\:grid-cols-2 p.text-stone-400 {
-    color: #8c7c70 !important;
+    color: var(--text-muted) !important;
   }
 
   /* Astronomical Factors Information */
   .bg-stone-950.border-stone-800 {
-    background-color: #f5f1e8 !important;
-    border: 1px solid #e8dcc4 !important;
+    background-color: var(--bg-inner-alt) !important;
+    border: 1px solid var(--border-card) !important;
+    transition: all 0.35s ease;
   }
 
   .bg-stone-950.border-stone-800 h4 {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
   }
 
   .bg-stone-950.border-stone-800 span.text-stone-400 {
-    color: #5c4f46 !important;
+    color: var(--text-muted) !important;
   }
 
   .bg-stone-950.border-stone-800 span.text-neutral-200 {
-    color: #2d241e !important;
+    color: var(--text-app) !important;
   }
 
   /* Solar & Lunar Horizons Grid Card */
   .bg-stone-900\/40.border-stone-800 {
-    background-color: #ffffff !important;
-    border: 1px solid #e8dcc4 !important;
-    box-shadow: 0 4px 20px rgba(45, 36, 30, 0.03) !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
+    box-shadow: var(--shadow-card) !important;
+    transition: all 0.35s ease;
   }
 
   .bg-stone-900\/40.border-stone-800 h3 {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
     font-family: var(--font-display), serif !important;
   }
 
   .bg-stone-900\/40.border-stone-800 .bg-stone-950 {
-    background-color: #faf7f2 !important;
-    border: 1px solid #e8dcc4 !important;
+    background-color: var(--bg-app) !important;
+    border: 1px solid var(--border-card) !important;
   }
 
   .bg-stone-900\/40.border-stone-800 .bg-stone-950 p {
-    color: #92400e !important;
+    color: var(--text-secondary) !important;
   }
 
   .bg-stone-900\/40.border-stone-800 .bg-stone-950 .text-white {
-    color: #2d241e !important;
+    color: var(--text-app) !important;
     font-family: var(--font-sans), serif !important;
   }
 
@@ -239,330 +301,350 @@
   .bg-stone-900\/40.border-stone-800 .bg-orange-500\/10,
   .bg-stone-900\/40.border-stone-800 .bg-indigo-500\/10,
   .bg-stone-900\/40.border-stone-800 .bg-indigo-950\/20 {
-    background-color: #ffffff !important;
-    border: 1px solid #e8dcc4 !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
   }
 
   /* Samvat Eras list */
   .bg-sacred-card.border-sacred-gold\/15 {
-    background-color: #ffffff !important;
-    border: 1px solid #e8dcc4 !important;
-    box-shadow: 0 4px 20px rgba(45, 36, 30, 0.03) !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
+    box-shadow: var(--shadow-card) !important;
+    transition: all 0.35s ease;
   }
 
   .bg-sacred-card.border-sacred-gold\/15 h4 {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
   }
 
   .bg-sacred-card.border-sacred-gold\/15 span.text-stone-400 {
-    color: #5c4f46 !important;
+    color: var(--text-muted) !important;
   }
 
   .bg-sacred-card.border-sacred-gold\/15 span.text-glow-gold.text-sacred-gold {
-    background-color: #f5f1e8 !important;
-    border: 1px solid #e8dcc4 !important;
-    color: #78350f !important;
+    background-color: var(--bg-inner-alt) !important;
+    border: 1px solid var(--border-card) !important;
+    color: var(--text-primary) !important;
   }
 
   .bg-sacred-card.border-sacred-gold\/15 span.text-orange-400 {
-    background-color: #f5f1e8 !important;
-    border: 1px solid #e8dcc4 !important;
-    color: #d97706 !important;
+    background-color: var(--bg-inner-alt) !important;
+    border: 1px solid var(--border-card) !important;
+    color: var(--text-accent) !important;
   }
 
   /* Daily Festivals Widget list */
   #daily-festivals-widget {
-    background-color: #ffffff !important;
-    border: 1px solid #e8dcc4 !important;
-    box-shadow: 0 4px 20px rgba(45, 36, 30, 0.03) !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
+    box-shadow: var(--shadow-card) !important;
+    transition: all 0.35s ease;
   }
 
   #daily-festivals-widget h3 {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
     font-family: var(--font-display), serif !important;
   }
 
   #daily-festivals-widget li.bg-stone-950 {
-    background-color: #faf7f2 !important;
-    border: 1px solid #e8dcc4 !important;
+    background-color: var(--bg-app) !important;
+    border: 1px solid var(--border-card) !important;
   }
 
   #daily-festivals-widget li.bg-stone-950:hover {
-    border-color: #d97706 !important;
+    border-color: var(--border-active) !important;
   }
 
   #daily-festivals-widget li.bg-stone-950 h4 {
-    color: #2d241e !important;
+    color: var(--text-app) !important;
     font-weight: 700 !important;
   }
 
   #daily-festivals-widget li.bg-stone-950 p.text-stone-400 {
-    color: #5c4f46 !important;
+    color: var(--text-muted) !important;
   }
 
   /* Month Grid Calendar Panel */
   #month-view-grid-panel {
-    background-color: #ffffff !important;
-    border: 1px solid #e8dcc4 !important;
-    box-shadow: 0 6px 30px rgba(45, 36, 30, 0.04) !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
+    box-shadow: var(--shadow-card-heavy) !important;
+    transition: all 0.35s ease;
   }
 
   #month-view-grid-panel h3.font-display {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
   }
 
   #month-view-grid-panel button {
-    background-color: #faf7f2 !important;
-    border: 1px solid #e8dcc4 !important;
-    color: #78350f !important;
+    background-color: var(--bg-app) !important;
+    border: 1px solid var(--border-card) !important;
+    color: var(--text-primary) !important;
+    transition: all 0.25s ease;
   }
 
   #month-view-grid-panel button:hover {
-    background-color: #e8dcc4 !important;
-    color: #1c1917 !important;
+    background-color: var(--bg-inner-hover) !important;
+    color: var(--text-app) !important;
   }
 
   #month-view-grid-panel .grid-cols-7 span {
-    color: #92400e !important;
+    color: var(--text-secondary) !important;
   }
 
   /* Single Day grids inside Month View */
   #month-view-grid-panel .bg-stone-900\/60 {
-    background-color: #faf7f2 !important;
-    border-color: #e8dcc4 !important;
+    background-color: var(--bg-app) !important;
+    border-color: var(--border-card) !important;
+    transition: all 0.25s ease;
   }
 
   #month-view-grid-panel .bg-stone-900\/60:hover {
-    background-color: #f5f1e8 !important;
-    border-color: #d97706 !important;
+    background-color: var(--bg-inner-hover) !important;
+    border-color: var(--border-active) !important;
   }
 
   #month-view-grid-panel .bg-stone-900\/60 span.font-mono {
-    color: #2d241e !important;
+    color: var(--text-app) !important;
   }
 
   #month-view-grid-panel .bg-stone-900\/60 p.text-stone-400 {
-    color: #8c7c70 !important;
+    color: var(--text-muted-light) !important;
   }
 
   #month-view-grid-panel .bg-stone-900\/60 p.text-amber-300 {
-    color: #92400e !important;
+    color: var(--text-secondary) !important;
     font-weight: 600 !important;
   }
 
   #month-view-grid-panel .bg-stone-900\/60 .bg-stone-950 {
-    background-color: rgba(217, 119, 6, 0.08) !important;
+    background-color: var(--bg-active) !important;
     border-color: rgba(217, 119, 6, 0.25) !important;
   }
 
   #month-view-grid-panel .bg-stone-900\/60 .bg-stone-950 span.text-sacred-gold {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
     font-weight: 600 !important;
   }
 
   /* Currently Selected Active Day in Month View */
   #month-view-grid-panel .bg-gradient-to-br.from-sacred-orange\/20.to-sacred-gold\/15 {
-    background: linear-gradient(135deg, rgba(217, 119, 6, 0.2) 0%, rgba(120, 53, 15, 0.15) 100%) !important;
-    border: 2px solid #d97706 !important;
+    background: linear-gradient(135deg, var(--bg-active) 0%, rgba(120, 53, 15, 0.15) 100%) !important;
+    border: 2px solid var(--border-active) !important;
     box-shadow: 0 4px 10px rgba(217, 119, 6, 0.1) !important;
   }
 
   #month-view-grid-panel .bg-gradient-to-br.from-sacred-orange\/20.to-sacred-gold\/15 span.font-mono {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.8);
+  }
+  
+  .dark #month-view-grid-panel .bg-gradient-to-br.from-sacred-orange\/20.to-sacred-gold\/15 span.font-mono {
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.8);
   }
 
   /* Empty days spacer background */
   #month-view-grid-panel .bg-stone-900\/10 {
-    background-color: rgba(245, 241, 232, 0.4) !important;
-    border: 1px solid rgba(232, 220, 196, 0.5) !important;
+    background-color: rgba(245, 241, 232, 0.2) !important;
+    border: 1px solid rgba(232, 220, 196, 0.3) !important;
+  }
+  
+  .dark #month-view-grid-panel .bg-stone-900\/10 {
+    background-color: rgba(20, 16, 14, 0.4) !important;
+    border: 1px solid rgba(60, 48, 38, 0.3) !important;
   }
 
   /* Festivals Range Feed Panel */
   #festivals-range-feed-panel {
-    background-color: #ffffff !important;
-    border: 1px solid #e8dcc4 !important;
-    box-shadow: 0 6px 30px rgba(45, 36, 30, 0.04) !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
+    box-shadow: var(--shadow-card-heavy) !important;
+    transition: all 0.35s ease;
   }
 
   #festivals-range-feed-panel h3 {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
     font-family: var(--font-display), serif !important;
   }
 
   #festivals-range-feed-panel p.text-stone-400 {
-    color: #5c4f46 !important;
+    color: var(--text-muted) !important;
   }
 
   /* Individual festival row item cards */
   #festivals-range-feed-panel .bg-stone-900 {
-    background-color: #faf7f2 !important;
-    border: 1px solid #e8dcc4 !important;
+    background-color: var(--bg-app) !important;
+    border: 1px solid var(--border-card) !important;
+    transition: all 0.25s ease;
   }
 
   #festivals-range-feed-panel .bg-stone-900:hover {
-    background-color: #f5f1e8 !important;
-    border-color: #d97706 !important;
+    background-color: var(--bg-inner-hover) !important;
+    border-color: var(--border-active) !important;
   }
 
   #festivals-range-feed-panel .bg-stone-900 text-sacred-orange {
-    color: #92400e !important;
+    color: var(--text-secondary) !important;
   }
 
   #festivals-range-feed-panel .bg-stone-900 h4 {
-    color: #2d241e !important;
+    color: var(--text-app) !important;
   }
 
   #festivals-range-feed-panel .bg-stone-900 p.text-stone-400 {
-    color: #8c7c70 !important;
+    color: var(--text-muted-light) !important;
   }
 
   #festivals-range-feed-panel .bg-stone-900 .bg-sacred-gold\/15 {
-    background-color: #f5f1e8 !important;
-    border: 1px solid #e8dcc4 !important;
-    color: #78350f !important;
+    background-color: var(--bg-inner-alt) !important;
+    border: 1px solid var(--border-card) !important;
+    color: var(--text-primary) !important;
   }
 
   /* Muhurtas tab and lists */
   #muhurta-tab .bg-sacred-card {
-    background-color: #ffffff !important;
-    border: 1px solid #e8dcc4 !important;
-    box-shadow: 0 6px 30px rgba(45, 36, 30, 0.04) !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
+    box-shadow: var(--shadow-card-heavy) !important;
+    transition: all 0.35s ease;
   }
 
   #muhurta-tab h3 {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
     font-family: var(--font-display), serif !important;
   }
 
   #muhurta-tab .grid .bg-stone-900 {
-    background-color: #faf7f2 !important;
-    border: 1px solid #e8dcc4 !important;
+    background-color: var(--bg-app) !important;
+    border: 1px solid var(--border-card) !important;
+    transition: all 0.25s ease;
   }
 
   #muhurta-tab .grid .bg-stone-900:hover {
-    border-color: #d97706 !important;
-    box-shadow: 0 4px 15px rgba(217, 119, 6, 0.04) !important;
+    border-color: var(--border-active) !important;
+    box-shadow: var(--shadow-card-heavy) !important;
   }
 
   #muhurta-tab .grid .bg-stone-900 span.text-sacred-gold {
-    color: #92400e !important;
+    color: var(--text-secondary) !important;
   }
 
   #muhurta-tab .grid .bg-stone-900 h4 {
-    color: #2d241e !important;
+    color: var(--text-app) !important;
   }
 
   #muhurta-tab .grid .bg-stone-900 .text-amber-400 {
-    color: #d97706 !important;
+    color: var(--text-accent) !important;
   }
 
   #muhurta-tab .grid .bg-stone-900 p.text-stone-400 {
-    color: #5c4f46 !important;
+    color: var(--text-muted) !important;
   }
 
   /* Avoidance / Inauspicious Times Cards */
   #muhurta-tab .bg-stone-900.border-stone-800 {
-    background-color: #ffffff !important;
-    border: 1px solid #e8dcc4 !important;
-    box-shadow: 0 6px 30px rgba(45, 36, 30, 0.04) !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
+    box-shadow: var(--shadow-card-heavy) !important;
+    transition: all 0.35s ease;
   }
 
   #muhurta-tab .bg-stone-900.border-stone-800 h3 {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
   }
 
   #muhurta-tab .bg-stone-950.border-red-950,
   #muhurta-tab .bg-stone-950.border-stone-800,
   #muhurta-tab .bg-stone-950.border-amber-950 {
-    background-color: #faf7f2 !important;
-    border: 1px solid #e8dcc4 !important;
+    background-color: var(--bg-app) !important;
+    border: 1px solid var(--border-card) !important;
   }
 
   #muhurta-tab .bg-stone-950 span.text-red-500,
   #muhurta-tab .bg-stone-950 span.text-amber-500,
   #muhurta-tab .bg-stone-950 span.text-stone-400 {
-    color: #92400e !important;
+    color: var(--text-secondary) !important;
     font-weight: 700 !important;
   }
 
   #muhurta-tab .bg-stone-950 h4 {
-    color: #2d241e !important;
+    color: var(--text-app) !important;
   }
 
   #muhurta-tab .bg-stone-950 span.text-orange-500,
   #muhurta-tab .bg-stone-950 span.text-stone-300,
   #muhurta-tab .bg-stone-950 span.text-yellow-500 {
-    background-color: #f5f1e8 !important;
-    border: 1px solid #e8dcc4 !important;
-    color: #78350f !important;
+    background-color: var(--bg-inner-alt) !important;
+    border: 1px solid var(--border-card) !important;
+    color: var(--text-primary) !important;
   }
 
   #muhurta-tab .bg-stone-950 p.text-stone-500 {
-    color: #8c7c70 !important;
+    color: var(--text-muted-light) !important;
   }
 
   /* Planetary positions panel (Graha Spashta) */
   #planetary-positions-panel {
-    background-color: #ffffff !important;
-    border: 1px solid #e8dcc4 !important;
-    box-shadow: 0 6px 30px rgba(45, 36, 30, 0.04) !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
+    box-shadow: var(--shadow-card-heavy) !important;
+    transition: all 0.35s ease;
   }
 
   #planetary-positions-panel h3 {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
     font-family: var(--font-display), serif !important;
   }
 
   #planetary-positions-panel p.text-stone-400 {
-    color: #5c4f46 !important;
+    color: var(--text-muted) !important;
   }
 
   /* Table styling wrapper */
   #planetary-positions-panel .bg-stone-900\/50 {
-    background-color: #ffffff !important;
-    border: 1px solid #e8dcc4 !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
   }
 
   #planetary-positions-panel table thead tr.bg-stone-950 {
-    background-color: #f5f1e8 !important;
-    color: #78350f !important;
-    border-bottom: 2px solid #e8dcc4 !important;
+    background-color: var(--bg-inner-alt) !important;
+    color: var(--text-primary) !important;
+    border-bottom: 2px solid var(--border-card) !important;
   }
 
   #planetary-positions-panel table tbody tr {
-    border-bottom: 1px solid #e8dcc4 !important;
+    border-bottom: 1px solid var(--border-card) !important;
   }
 
   #planetary-positions-panel table tbody tr:hover {
-    background-color: #faf7f2 !important;
+    background-color: var(--bg-inner-hover) !important;
   }
 
   #planetary-positions-panel table tbody td {
-    color: #2d241e !important;
+    color: var(--text-app) !important;
   }
 
   #planetary-positions-panel table tbody td.text-stone-300 {
-    color: #5c4f46 !important;
+    color: var(--text-muted) !important;
   }
 
   #planetary-positions-panel table tbody td span.text-stone-100 {
-    color: #2d241e !important;
+    color: var(--text-app) !important;
   }
 
   #planetary-positions-panel table tbody td span.text-stone-500 {
-    color: #8c7c70 !important;
+    color: var(--text-muted-light) !important;
   }
 
   /* Retrograde vs Direct status tags */
   #planetary-positions-panel .bg-red-950\/40,
   #planetary-positions-panel .bg-emerald-950\/40 {
-    background-color: #faf7f2 !important;
-    border: 1px solid #e8dcc4 !important;
+    background-color: var(--bg-app) !important;
+    border: 1px solid var(--border-card) !important;
   }
 
   #planetary-positions-panel .bg-red-950\/40 {
-    color: #92400e !important;
+    color: var(--text-secondary) !important;
   }
 
   #planetary-positions-panel .bg-emerald-950\/40 {
@@ -571,77 +653,84 @@
 
   /* Cosmic Clock Section (Embedded Vedic Clock) */
   #cosmic-clock-section {
-    background-color: #ffffff !important;
-    border: 1px solid #e8dcc4 !important;
-    box-shadow: 0 4px 20px rgba(45, 36, 30, 0.03) !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
+    box-shadow: var(--shadow-card) !important;
+    transition: all 0.35s ease;
   }
 
   #cosmic-clock-section h3 {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
     font-family: var(--font-display), serif !important;
   }
 
   #cosmic-clock-section p.text-[11px] {
-    color: #5c4f46 !important;
+    color: var(--text-muted) !important;
   }
 
   /* Circular Dial */
   #cosmic-clock-section .bg-stone-950 {
-    background-color: #faf7f2 !important;
-    border: 1px solid #e8dcc4 !important;
-    box-shadow: inset 0 4px 12px rgba(45, 36, 30, 0.03) !important;
+    background-color: var(--bg-app) !important;
+    border: 1px solid var(--border-card) !important;
+    box-shadow: var(--dial-shadow) !important;
   }
 
   #cosmic-clock-section .bg-stone-950 div.text-orange-400 {
-    color: #d97706 !important;
+    color: var(--text-accent) !important;
   }
 
   #cosmic-clock-section .bg-stone-950 div.text-amber-500 {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
   }
 
   #cosmic-clock-section .bg-stone-950 div.text-slate-400,
   #cosmic-clock-section .bg-stone-950 div.text-stone-500 {
-    color: #5c4f46 !important;
+    color: var(--text-muted) !important;
+  }
+
+  #cosmic-clock-section .border-stone-900.border-dashed {
+    border-color: var(--dial-ring) !important;
+  }
+
+  #cosmic-clock-section .border-sacred-gold\/30 {
+    border-color: var(--dial-ring) !important;
   }
 
   /* Center medallion */
   #cosmic-clock-section .w-24.h-24.rounded-full {
-    background-color: #ffffff !important;
-    border: 1px solid #e8dcc4 !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-card) !important;
     box-shadow: 0 4px 10px rgba(45, 36, 30, 0.05) !important;
   }
 
   #cosmic-clock-section .w-24.h-24.rounded-full span.text-sacred-gold {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
   }
 
   #cosmic-clock-section .w-24.h-24.rounded-full span.text-neutral-300 {
-    color: #2d241e !important;
+    color: var(--text-app) !important;
   }
 
   /* Day and night duration indicators */
   #din-mana-display, #ratri-mana-display {
-    background-color: #faf7f2 !important;
-    border: 1px solid #e8dcc4 !important;
+    background-color: var(--bg-app) !important;
+    border: 1px solid var(--border-card) !important;
   }
 
   #din-mana-display span, #ratri-mana-display span {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
   }
 
   #din-mana-display strong, #ratri-mana-display strong {
-    color: #92400e !important;
+    color: var(--text-secondary) !important;
   }
 
   /* Footer Section representation */
   #sanatan-footer-credits p.text-stone-500 {
-    color: #8c7c70 !important;
+    color: var(--text-muted-light) !important;
   }
 
   #sanatan-footer-credits p.text-amber-600\/60 {
-    color: #78350f !important;
+    color: var(--text-primary) !important;
   }
 }
-
-
