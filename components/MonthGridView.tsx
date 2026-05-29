@@ -161,7 +161,7 @@ export function MonthGridView({
           className="bg-stone-900 border border-stone-800 hover:border-sacred-gold/40 hover:text-sacred-gold px-3.5 py-2 rounded-lg text-xs outline-none transition-all flex items-center gap-1 cursor-pointer font-sans"
         >
           <ChevronLeft className="w-3.5 h-3.5" />
-          <span>{language === 'hi' ? 'पूर्व मास' : language === 'sa' ? 'पूर्वमासः' : 'Prev Month'}</span>
+          <span>{language === 'hi' ? 'पूर्व मास' : 'Prev Month'}</span>
         </button>
         
         <div className="flex flex-col items-center gap-1 text-center">
@@ -180,18 +180,16 @@ export function MonthGridView({
           onClick={handleNextMonth}
           className="bg-stone-900 border border-stone-800 hover:border-sacred-gold/40 hover:text-sacred-gold px-3.5 py-2 rounded-lg text-xs outline-none transition-all flex items-center gap-1 cursor-pointer font-sans"
         >
-          <span>{language === 'hi' ? 'उत्तर मास' : language === 'sa' ? 'अपरमासः' : 'Next Month'}</span>
+          <span>{language === 'hi' ? 'उत्तर मास' : 'Next Month'}</span>
           <ChevronRight className="w-3.5 h-3.5" />
         </button>
       </div>
 
       {/* Day Titles */}
       <div className="grid grid-cols-7 gap-2 text-center text-[10px] md:text-xs uppercase tracking-wider font-display font-semibold text-neutral-400 mb-2">
-        {language === 'en' 
-          ? ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
-          : language === 'hi'
-            ? ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि']
-            : ['रविः', 'सोमः', 'भौमः', 'बुधः', 'गुरुः', 'भृगुः', 'शनिः']
+        {language === 'hi'
+          ? ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि']
+          : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
         }
       </div>
 

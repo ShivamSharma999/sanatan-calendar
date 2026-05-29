@@ -1,6 +1,6 @@
 // lib/panchang-helpers.ts
 
-export type SubLanguage = 'en' | 'hi' | 'sa';
+export type SubLanguage = 'en' | 'hi';
 
 export const LANG_LABELS: Record<SubLanguage, Record<string, string>> = {
   en: {
@@ -131,76 +131,11 @@ export const LANG_LABELS: Record<SubLanguage, Record<string, string>> = {
     locationError: 'जीपीएस निष्क्रिय। उज्जैन स्थान का उपयोग किया गया।',
     vedicClock: 'वैदिक ब्रह्मांडीय घड़ी',
   },
-  sa: {
-    title: 'सनातनपञ्चाङ्गम्',
-    subtitle: 'वैदिककालिकसूचिका एवं ब्रह्माण्डघटी',
-    selectDate: 'तिथिचयनम्',
-    location: 'स्थानम्',
-    requestLocation: 'जीपीएस-स्थानम् उपयोज्यताम्',
-    detectionActive: 'स्थानम् सक्रियम्',
-    defaultLocation: 'पूर्वनिर्धारितम् (अवन्तिका/उज्जयिनी)',
-    monthView: 'मासिकप्रदर्शनी',
-    dailyPanchang: 'दैनिकपञ्चाङ्गम्',
-    upcomingFestivals: 'आगामिनः उत्सवाः व्रतानि च',
-    muhurtasTime: 'शुभाशुभप्रहरकालः',
-    planetaryPositions: 'ग्रहस्पष्टम् (ग्रहाणाम् स्थितिः)',
-    adhikMasa: 'अधिकमासः',
-    tithi: 'तिथिः',
-    nakshatra: 'नक्षत्रम्',
-    yoga: 'योगः',
-    karana: 'करणम्',
-    vara: 'वासरः (वासरम्)',
-    sunrise: 'सूर्योदयः',
-    sunset: 'सूर्यास्तम्',
-    moonrise: 'चन्द्रोदयः',
-    moonset: 'चन्द्रास्तम्',
-    samvat: 'संवत्सराः',
-    vikramSamvat: 'वैक्रमसंवत्सरः',
-    shakaSamvat: 'शकसंवत्सरः',
-    solarMonth: 'सौरमासः',
-    lunarMonth: 'चान्द्रमासः',
-    rashi: 'राशिः',
-    sunRashi: 'सूर्यराशिः',
-    moonRashi: 'चन्द्रराशिः',
-    sunNakshatra: 'सूर्यनक्षत्रम्',
-    ayanamsa: 'अयनांशः',
-    rahukalam: 'राहुकालः',
-    yamaganda: 'यमगण्डकालः',
-    gulikakalam: 'गुलिककालः',
-    abhijit: 'अभिजित्मुहूर्तः',
-    brahma: 'ब्राह्ममुहूर्तः',
-    durmuhurta: 'दुर्मुहूर्तः',
-    varjyam: 'वर्ज्यकालः',
-    amritkala: 'अमृतकालः',
-    bhadrakalam: 'भद्राकालः',
-    gandmula: 'गण्डमूलनक्षत्रम्',
-    anandadi: 'आनन्दादियोगः',
-    choghadiya: 'चौघटीचक्रम्',
-    hora: 'होराचक्रम्',
-    grahas: 'नवग्रहस्थितिः',
-    sign: 'राशिः',
-    degree: 'अंशः',
-    retrograde: 'वक्रगतिः',
-    direct: 'मार्गी',
-    festivals: 'पर्वणि व्रतानि च',
-    noFestivals: 'अस्मिन् दिने किमपि पर्व नास्ति।',
-    activeAtSunrise: 'सूर्योदये सक्रियम्',
-    endsAt: 'समाप्तिसमयः',
-    auspicious: 'शुभम्',
-    inauspicious: 'अशुभम्',
-    neutral: 'मध्यमम्',
-    purnimantaActive: 'चान्द्रमासस्य गणना पूर्णिमान्तपद्धत्या (उत्तरभारतपरम्परया) क्रियते।',
-    searchingLocation: 'स्थानशोधनम् प्रचलति...',
-    locationSuccess: 'स्थानम् स्वीकृतम्!',
-    locationError: 'भूप्रवेशः विफलः। अवन्तिका-उज्जयिनी स्थानम् प्रयुक्तम्।',
-    vedicClock: 'वैदिककालिकसूचिका',
-  },
 };
 
 export const MONTHS_MAP: Record<SubLanguage, string[]> = {
   en: ['Chaitra', 'Vaishakha', 'Jyeshtha', 'Ashadha', 'Shravana', 'Bhadrapada', 'Ashvina', 'Kartika', 'Margashirsha', 'Pausha', 'Magha', 'Phalguna'],
   hi: ['चैत्र', 'वैशाख', 'ज्येष्ठ', 'आषाढ़', 'श्रावण', 'भाद्रपद', 'आश्विन', 'कार्तिक', 'मार्गशीर्ष', 'पौष', 'माघ', 'फाल्गुन'],
-  sa: ['चैत्रः', 'वैशाखः', 'ज्येष्ठः', 'आषाढः', 'श्रावणः', 'भाद्रपदः', 'आश्विनः', 'कार्तिकः', 'मार्गशीर्षः', 'पौषः', 'माघः', 'फाल्गुनः']
 };
 
 export const TITHIS_MAP: Record<SubLanguage, string[]> = {
@@ -220,20 +155,11 @@ export const TITHIS_MAP: Record<SubLanguage, string[]> = {
     'षष्ठी (६)', 'सप्तमी (७)', 'अष्टमी (८)', 'नवमी (९)', 'दशमी (१०)',
     'एकादशी (११)', 'द्वादशी (१२)', 'त्रयोदशी (१३)', 'चतुर्दशी (१४)', 'अमावस्या (३०)'
   ],
-  sa: [
-    'प्रतिपदा (१)', 'द्वितीया (२)', 'तृतीया (३)', 'चतुर्थी (४)', 'पञ्चमी (५)',
-    'षष्ठी (६)', 'सप्तमी (७)', 'अष्टमी (८)', 'नवमी (९)', 'दशमी (१०)',
-    'एकादशी (११)', 'द्वादशी (१२)', 'त्रयोदशी (१३)', 'चतुर्दशी (१४)', 'पूर्णमासी (१५)',
-    'प्रतिपदा (१)', 'द्वितीया (२)', 'तृतीया (३)', 'चतुर्थी (४)', 'पञ्चमी (५)',
-    'षष्ठी (६)', 'सप्तमी (७)', 'अष्टमी (८)', 'नवमी (९)', 'दशमी (१०)',
-    'एकादशी (११)', 'द्वादशी (१२)', 'त्रयोदशी (१३)', 'चतुर्दशी (१४)', 'अमावास्या (३०)'
-  ]
 };
 
 export const PAKSHA_MAP: Record<SubLanguage, Record<string, string>> = {
   en: { Shukla: 'Shukla Paksha (Waxing Moon) 🌒', Krishna: 'Krishna Paksha (Waning Moon) 🌘' },
   hi: { Shukla: 'शुक्ल पक्ष 🌒', Krishna: 'कृष्ण पक्ष 🌘' },
-  sa: { Shukla: 'शुक्लपक्षः 🌒', Krishna: 'कृष्णपक्षः 🌘' },
 };
 
 export const NAKSHATRAS_MAP: Record<SubLanguage, string[]> = {
@@ -247,11 +173,6 @@ export const NAKSHATRAS_MAP: Record<SubLanguage, string[]> = {
     'मघा', 'पूर्वाफाल्गुनी', 'उत्तराफाल्गुनी', 'हस्त', 'चित्रा', 'स्वाती', 'विशाखा', 'अनुराधा', 'ज्येष्ठा',
     'मूल', 'पूर्वाषाढ़ा', 'उत्तराषाढ़ा', 'श्रवण', 'धनिष्ठा', 'शतभिषा', 'पूर्वाभाद्रपद', 'उत्तराभाद्रपद', 'रेवती'
   ],
-  sa: [
-    'अश्विनी', 'भरणी', 'कृत्तिका', 'रोहिणी', 'मृगशीर्षम्', 'आर्द्रा', 'पुनर्वसुः', 'पुष्यः', 'आश्लेषा',
-    'मघा', 'पूर्वफाल्गुनी', 'उत्तरफाल्गुनी', 'हस्तः', 'चित्रा', 'स्वाती', 'विशाखा', 'अनुराधा', 'ज्येष्ठा',
-    'मूलम्', 'पूर्वाषाढा', 'उत्तराषाढा', 'श्रवणः', 'धनिष्ठा', 'शतभिषक्', 'पूर्वभाद्रपदा', 'उत्तरभाद्रपदा', 'रेवती'
-  ]
 };
 
 export const YOGAS_MAP: Record<SubLanguage, string[]> = {
@@ -265,23 +186,16 @@ export const YOGAS_MAP: Record<SubLanguage, string[]> = {
     'गण्ड', 'वृद्धि', 'ध्रुव', 'व्याघात', 'हर्षण', 'वज्र', 'सिद्धि', 'व्यतिपात', 'वरीयान', 'परिघ',
     'शिव', 'सिद्ध', 'साध्य', 'शुभ', 'शुक्ल', 'ब्रह्म', 'इन्द्र', 'वैधृति'
   ],
-  sa: [
-    'विष्कम्भा', 'प्रीतिः', 'आयुष्मान्', 'सौभाग्यम्', 'शोभनः', 'अतिगण्डः', 'सुकर्मा', 'धृतिः', 'शूलः',
-    'गण्डः', 'वृद्धिः', 'ध्रुवः', 'व्याघातः', 'हर्षणः', 'वज्रः', 'सिद्धिः', 'व्यतिपातः', 'वरीयान्', 'परिघः',
-    'शिवः', 'सिद्धः', 'साध्यः', 'शुभः', 'शुक्लः', 'ब्रह्मा', 'इन्द्रः', 'वैधृतिः'
-  ]
 };
 
 export const KARANAS_MAP: Record<SubLanguage, string[]> = {
   en: ['Bava', 'Balava', 'Kaulava', 'Taitila', 'Garija', 'Vanija', 'Vishti (Bhadra)', 'Shakuni', 'Chatuspada', 'Naga', 'Kintughna'],
   hi: ['बव', 'बालव', 'कौलव', 'तैतिल', 'गरिज', 'वणिज', 'विष्टि (भद्रा)', 'शकुनि', 'चतुष्पाद', 'नाग', 'किन्तुघ्न'],
-  sa: ['बवः', 'बालवः', 'कौलवः', 'तैतिलः', 'गरिजः', 'वणिजः', 'विष्टिः (भद्रा)', 'शकुनिः', 'चतुष्पादः', 'नागः', 'किन्तुघ्नः']
 };
 
 export const VARA_MAP: Record<SubLanguage, string[]> = {
   en: ['Aditya-vara (Sunday) ☀️', 'Soma-vara (Monday) 🌙', 'Mangala-vara (Tuesday) 🔴', 'Budha-vara (Wednesday) 🟢', 'Guru-vara (Thursday) 🟡', 'Shukra-vara (Friday) ⚪', 'Shani-vara (Saturday) 🟣'],
   hi: ['रविवार (आदित्यवार) ☀️', 'सोमवार 🌙', 'मंगलवार 🔴', 'बुधवार 🟢', 'गुरुवार (बृहस्पतिवार) 🟡', 'शुक्रवार ⚪', 'शनिवार 🟣'],
-  sa: ['आदित्यवासरः ☀️', 'सोमवासरः 🌙', 'मङ्गलवासरः 🔴', 'बुधवासरः 🟢', 'गुरुवासरः 🟡', 'शुक्रवासरः ⚪', 'शनिवासरः 🟣']
 };
 
 export const RASHI_MAP: Record<SubLanguage, { name: string; symbol: string }[]> = {
@@ -313,20 +227,6 @@ export const RASHI_MAP: Record<SubLanguage, { name: string; symbol: string }[]> 
     { name: 'कुम्भ', symbol: '♒' },
     { name: 'मीन', symbol: '♓' }
   ],
-  sa: [
-    { name: 'मेषः', symbol: '♈' },
-    { name: 'वृषभः', symbol: '♉' },
-    { name: 'मिथुनम्', symbol: '♊' },
-    { name: 'कर्कः', symbol: '♋' },
-    { name: 'सिंहः', symbol: '♌' },
-    { name: 'कन्या', symbol: '♍' },
-    { name: 'तुला', symbol: '♎' },
-    { name: 'वृश्चिकः', symbol: '♏' },
-    { name: 'धनुः', symbol: '♐' },
-    { name: 'मकरः', symbol: '♑' },
-    { name: 'कुम्भः', symbol: '♒' },
-    { name: 'मीनः', symbol: '♓' }
-  ]
 };
 
 export const GRAHA_MAP: Record<SubLanguage, Record<string, string>> = {
@@ -352,17 +252,6 @@ export const GRAHA_MAP: Record<SubLanguage, Record<string, string>> = {
     Rahu: 'राहु 🌚',
     Ketu: 'केतु 🌑',
   },
-  sa: {
-    Sun: 'सूर्यः ☀️',
-    Moon: 'चन्द्रः 🌙',
-    Mars: 'मङ्गलः 🔴',
-    Mercury: 'बुधः 🟢',
-    Jupiter: 'गुरुः/बृहस्पतिः 🟡',
-    Venus: 'शुक्रः ⚪',
-    Saturn: 'शनिः 🟣',
-    Rahu: 'राहुः 🌚',
-    Ketu: 'केतुः 🌑',
-  }
 };
 
 /**
@@ -398,7 +287,6 @@ export function getPurnimantaMonthDisplay(
   if (isAdhika) {
     if (lang === 'en') return `Adhika ${baseMonth}`;
     if (lang === 'hi') return `अधिक ${baseMonth}`;
-    if (lang === 'sa') return `अधिक-${baseMonth}`;
   }
   return baseMonth;
 }

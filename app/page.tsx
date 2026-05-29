@@ -140,7 +140,7 @@ export default function SanatanCalendarPage() {
           timezone: -selectedDate.getTimezoneOffset(), // correct browser timezone offset in minutes
           masaSystem: 'purnimanta',
           computeEndTimes: true,
-          language: language === 'sa' ? 'hi' : language // fallback inside library to hi if sa
+          language: language
         }
       );
     } catch (e) {
@@ -306,7 +306,7 @@ export default function SanatanCalendarPage() {
                 }}
                 className="flex-1 text-center bg-stone-900 border border-stone-800 rounded py-1 text-xs hover:border-sacred-gold/30 hover:text-sacred-gold transition-colors text-stone-400 font-sans cursor-pointer"
               >
-                ◀ {language === 'hi' ? 'पिछला दिन' : language === 'sa' ? 'पूर्वदिवसः' : 'Prev Day'}
+                ◀ {language === 'hi' ? 'पिछला दिन' : 'Prev Day'}
               </button>
               <button
                 id="preset-today"
@@ -317,7 +317,7 @@ export default function SanatanCalendarPage() {
                 }}
                 className="flex-1 text-center bg-sacred-gold/10 border border-sacred-gold/40 rounded py-1 text-xs hover:bg-sacred-gold/20 hover:text-white transition-colors text-sacred-gold font-medium font-sans cursor-pointer"
               >
-                {language === 'hi' ? 'आज' : language === 'sa' ? 'अद्य' : 'Today'}
+                {language === 'hi' ? 'आज' : 'Today'}
               </button>
               <button
                 id="preset-next-day"
@@ -329,7 +329,7 @@ export default function SanatanCalendarPage() {
                 }}
                 className="flex-1 text-center bg-stone-900 border border-stone-800 rounded py-1 text-xs hover:border-sacred-gold/30 hover:text-sacred-gold transition-colors text-stone-400 font-sans cursor-pointer"
               >
-                {language === 'hi' ? 'अगला दिन' : language === 'sa' ? 'परदिवसः' : 'Next Day'} ▶
+                {language === 'hi' ? 'अगला दिन' : 'Next Day'} ▶
               </button>
             </div>
           </div>
@@ -363,9 +363,9 @@ export default function SanatanCalendarPage() {
           {/* Multilingual Switch */}
           <div className="flex flex-col gap-1.5">
             <label className="text-xs tracking-wider text-neutral-400 font-medium flex items-center gap-1.5 uppercase font-display">
-              <Globe className="w-3.5 h-3.5 text-sacred-gold" /> Language / भाषा / भाषा
+              <Globe className="w-3.5 h-3.5 text-sacred-gold" /> Language / भाषा
             </label>
-            <div className="grid grid-cols-3 gap-1 bg-stone-900 p-1.5 rounded-lg border border-sacred-gold/25 font-sans" id="language-tab-picker">
+            <div className="grid grid-cols-2 gap-1 bg-stone-900 p-1.5 rounded-lg border border-sacred-gold/25 font-sans" id="language-tab-picker">
               <button 
                 id="lang-btn-hi"
                 onClick={() => setLanguage('hi')}
@@ -376,17 +376,6 @@ export default function SanatanCalendarPage() {
                 }`}
               >
                 हिन्दी 🕉️
-              </button>
-              <button 
-                id="lang-btn-sa"
-                onClick={() => setLanguage('sa')}
-                className={`py-2 text-xs rounded font-medium transition-all outline-none cursor-pointer ${
-                  language === 'sa' 
-                    ? 'bg-gradient-to-r from-orange-600 to-amber-500 text-white font-bold drop-shadow-md' 
-                    : 'text-stone-400 hover:text-stone-200'
-                }`}
-              >
-                Sanskrit संस्कृतम् ⚜️
               </button>
               <button 
                 id="lang-btn-en"
@@ -411,11 +400,11 @@ export default function SanatanCalendarPage() {
       {/* Main Feature Tabs Navigation */}
       <nav className="flex flex-wrap gap-2 mb-8 justify-center z-10 relative font-sans" id="app-navigation-tabs">
         {[
-          { key: 'daily', icon: '🕉️', name: language === 'hi' ? 'दैनिक पञ्चांग' : language === 'sa' ? 'दैनिकपञ्चाङ्गम्' : 'Daily Panchang' },
-          { key: 'month', icon: '📅', name: language === 'hi' ? 'मास फल (ग्रिड)' : language === 'sa' ? 'मासिककोशः' : 'Month Grid' },
-          { key: 'festivals', icon: '🔔', name: language === 'hi' ? 'पर्व एवं त्योहार' : language === 'sa' ? 'उत्सवाः' : 'Festivals' },
-          { key: 'muhurta', icon: '⏱️', name: language === 'hi' ? 'शुभ-अशुभ मुहूर्त' : language === 'sa' ? 'शुभाशुभमुहूर्तः' : 'Muhurtas' },
-          { key: 'graha', icon: '🌌', name: language === 'hi' ? 'ग्रह स्पष्ट' : language === 'sa' ? 'ग्रहस्पष्टम्' : 'Graha Spashta' }
+          { key: 'daily', icon: '🕉️', name: language === 'hi' ? 'दैनिक पञ्चांग' : 'Daily Panchang' },
+          { key: 'month', icon: '📅', name: language === 'hi' ? 'मास फल (ग्रिड)' : 'Month Grid' },
+          { key: 'festivals', icon: '🔔', name: language === 'hi' ? 'पर्व एवं त्योहार' : 'Festivals' },
+          { key: 'muhurta', icon: '⏱️', name: language === 'hi' ? 'शुभ-अशुभ मुहूर्त' : 'Muhurtas' },
+          { key: 'graha', icon: '🌌', name: language === 'hi' ? 'ग्रह स्पष्ट' : 'Graha Spashta' }
         ].map((tab) => (
           <button
             key={tab.key}
